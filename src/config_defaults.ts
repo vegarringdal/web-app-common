@@ -39,9 +39,10 @@ export const DEFAULT_DB_CONNECTION_MODULE: string = "WWW.SAMPLE.COM"; // use hos
 export const DEFAULT_DB_CONNECTION_DB_OP: string = "WEB-REPORTS";
 export const DEFAULT_DB_CONNECTION_ACTION: string = "NA - NOT IN USE -> SENDING REPORT NAME";
 
-// access for roles in oracle db
-export const DEFAULT_ACCESS_DB: string = "DEFAULT";
-export const DEFAULT_ACCESS_VIEW: string = "WEB_ACCESS_VIEW";
+export const DEFAULT_DB_USERNAME: string = "TESTDB";
+export const DEFAULT_DB_PASSWORD: string = "TESTDB";
+export const DEFAULT_DB_CONNECTION_STRING: string =
+    "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=xe)))";
 
 // redis
 export const DEFAULT_REDIS_URL: string = "redis://localhost:6379";
@@ -53,19 +54,6 @@ export const DEFAULT_AZURE_SECRET: string = "SUPER SECRET";
 export const DEFAULT_AZURE_SCOPES: string[] = ["READ_ONLY"];
 export const DEFAULT_ACTIVATE_AZURE_FAKE_SUCCESS: boolean = false;
 export const DEFAULT_AZURE_FAKE_ROLES: string[] = [];
-
-// here we supply just names of our database connections
-// use comma to split them
-// Important size if names and user/pass/connection is the same
-export const DEFAULT_DB_CONNECTIONS_NAMES_ARRAY: string[] = ["DEFAULT"];
-
-// next 3 we supply the environment variables
-// use comma to split them
-// IMPORTANT!!! this is to values, just name of environment variables
-// You should put them in a secret config
-export const DEFAULT_DB_USERNAME_ARRAY: string[] = ["DEFAULT_DB_USERNAME"];
-export const DEFAULT_DB_CONNECTION_STRING_ARRAY: string[] = ["DEFAULT_DB_CONNECTION_STRING"];
-export const DEFAULT_DB_PASSWORD_ARRAY: string[] = ["DEFAULT_DB_PASSWORD"];
 
 /********************************************************************
  * Next part is just helpers for env variables so we get correct type from strings
