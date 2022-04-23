@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDirs": ["./src"],
         "module": "commonjs",
         "noEmit": false,
         "isolatedModules": false
