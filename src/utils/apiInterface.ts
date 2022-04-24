@@ -1,5 +1,9 @@
 type ApiInterfaceBase = {
     /**
+     * rest api name
+     */
+    apiName: string;
+    /**
      * view in database to call
      */
     viewName: string;
@@ -42,17 +46,20 @@ type ApiInterfaceBase = {
 };
 
 type ApiInterfaceChildView = {
-    childView: string;
+    /**
+     * child view api to use/call
+     */
+    childViewApi: string;
     /**
      * FOR AUTO GENERATED PAGE ONLY
      * child column to query
      */
-    childViewTo: string;
+    childTo: string;
     /**
      * FOR AUTO GENERATED PAGE ONLY
      * column to query with
      */
-    childViewFrom: string;
+    childFrom: string;
 };
 
 type columnTypeString = "string";
@@ -93,10 +100,10 @@ type ApiColumnCheckbox = {
 
 type ApiColumnDropdownView = {
     /**
-     * simple dropdown values
+     * simple dropdown values from another API
      * [[label, value],[label, value]]
      */
-    dropDownView: string;
+    dropDownViewApi: string;
     dropDownValueColumn: string;
     dropDownLabelColumn: string;
 };
@@ -111,27 +118,28 @@ type ApiColumnDropdownSimple = {
 
 type ApiColumnDropdownParentView = {
     /**
-     * parent_view, will bring button on for opening dialog
+     * parent_view api to use, will bring button on for opening dialog
+     * you need to make sure its added
      */
-    parentView: string;
+    parentViewApi: string;
     /**
      * parent_view, will bring button on for opening dialog
      */
     parentTitle: string;
     /**
-     * parent_view column to get
+     * parent api column to get
      */
-    parentViewFrom: string;
+    parentFrom: string;
     /**
      * column to insert value from parent
      */
-    parentViewTo: string[][];
+    parentTo: string[][];
     /**
      * parent column to update, usring par string,string
      * [[fromParentColumn, toChildColumn],[fromParentColumn, toChildColumn]]
      * useful if you have many columns from parent, also depends on view
      */
-    parentViewColumnsFromTo?: string[][];
+    parentColumnsFromTo?: string[][];
 };
 
 type ApiColumnOptions =
