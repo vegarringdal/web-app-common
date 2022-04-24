@@ -115,6 +115,10 @@ type ApiColumnDropdownParentView = {
      */
     parentView: string;
     /**
+     * parent_view, will bring button on for opening dialog
+     */
+    parentTitle: string;
+    /**
      * parent_view column to get
      */
     parentViewFrom: string;

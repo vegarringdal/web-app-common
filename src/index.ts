@@ -7,4 +7,5 @@
 export * from "./config_defaults";
 export * from "./utils/log";
 export { NumberFormater } from "./utils/numberFormater";
-export { ApiInterface } from "./utils/ApiInterface";
+export type { ApiInterface } from "./utils/ApiInterface";
+export type { UserRolesInterface } from "./utils/UserRolesInterface";
