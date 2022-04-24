@@ -38,35 +38,27 @@ type ApiInterfaceBase = {
      * important you dont use null columns here
      */
     primaryKey: string; // | string[]; TODO: add option for this
-    primaryKeyType: columnTypeString | columnTypeNumber;
+    /**
+     * child view api to use/call
+     */
+    childViewApi?: string;
+    /**
+     * FOR AUTO GENERATED PAGE ONLY
+     * child column to query
+     */
+    childTo?: string;
+    /**
+     * FOR AUTO GENERATED PAGE ONLY
+     * column to query with
+     */
+    childFrom?: string;
     /**
      * columns we can edit/ custom headername etc
      */
     columns: ApiColumn[];
 };
 
-type ApiInterfaceChildView = {
-    /**
-     * child view api to use/call
-     */
-    childViewApi: string;
-    /**
-     * FOR AUTO GENERATED PAGE ONLY
-     * child column to query
-     */
-    childTo: string;
-    /**
-     * FOR AUTO GENERATED PAGE ONLY
-     * column to query with
-     */
-    childFrom: string;
-};
-
-type columnTypeString = "string";
-type columnTypeNumber = "number";
-type ApiInterfaceOptions = ApiInterfaceBase & ApiInterfaceChildView;
-// todo: this is not working as I hoped, with base or base extended
-export type ApiInterface = ApiInterfaceBase | ApiInterfaceOptions;
+export type ApiInterface = ApiInterfaceBase;
 
 type ApiColumnBase = {
     /**
@@ -78,62 +70,63 @@ type ApiColumnBase = {
      */
     label?: string;
     /**
+     * type of input, defaults to text
+     */
+    type: "text" | "number" | "date";
+    /**
+     *  show by default
+     */
+    hiddenByDefault?: boolean;
+
+    /**
      * needed if you dont have a global
      */
     accessUpdate?: string[];
-};
 
-type ApiColumnCheckbox = {
     /**
      * is checkbox
      */
-    isCheckbox: boolean;
+    isCheckbox?: boolean;
     /**
      * if checkbox, what value to set when checked
      */
-    checkboxChecked: string;
+    checkboxChecked?: string;
     /**
      * if checkbox, what value to set when unchecked
      */
-    checkboxUnchecked: string;
-};
+    checkboxUnchecked?: string;
 
-type ApiColumnDropdownView = {
     /**
      * simple dropdown values from another API
      * [[label, value],[label, value]]
      */
-    dropDownViewApi: string;
-    dropDownValueColumn: string;
-    dropDownLabelColumn: string;
-};
+    dropDownViewApi?: string;
+    dropDownValueColumn?: string;
+    dropDownLabelColumn?: string;
 
-type ApiColumnDropdownSimple = {
     /**
      * simple dropdown values
      * [[label, value],[label, value]]
      */
-    dropDownValues: string[][];
-};
+    dropDownValues?: string[][];
 
-type ApiColumnDropdownParentView = {
     /**
      * parent_view api to use, will bring button on for opening dialog
      * you need to make sure its added
      */
-    parentViewApi: string;
+    parentViewApi?: string;
     /**
      * parent_view, will bring button on for opening dialog
      */
-    parentTitle: string;
+    parentTitle?: string;
     /**
      * parent api column to get
      */
-    parentFrom: string;
+    parentFrom?: string;
     /**
      * column to insert value from parent
      */
-    parentTo: string[][];
+    parentTo?: string[][];
     /**
      * parent column to update, usring par string,string
      * [[fromParentColumn, toChildColumn],[fromParentColumn, toChildColumn]]
@@ -142,11 +135,5 @@ type ApiColumnDropdownParentView = {
     parentColumnsFromTo?: string[][];
 };
 
-type ApiColumnOptions =
-    | ApiColumnCheckbox
-    | ApiColumnDropdownView
-    | ApiColumnDropdownSimple
-    | ApiColumnDropdownParentView;
-type baseExtended = ApiColumnBase & ApiColumnOptions;
 // todo: this is not working as I hoped, with base or base extended
-export type ApiColumn = ApiColumnBase | baseExtended;
+export type ApiColumn = ApiColumnBase;

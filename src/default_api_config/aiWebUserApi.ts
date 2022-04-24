@@ -7,16 +7,18 @@ export const aiWebUserApi: ApiInterface = {
     accessInsert: ["ACCESS_ADMIN"],
     accessDelete: ["ACCESS_ADMIN"],
     primaryKey: "ID",
-    primaryKeyType: "number",
     columns: [
         {
-            name: "USERNAME"
+            name: "USERNAME",
+            type: "text"
         },
         {
-            name: "FIRSTNAME"
+            name: "FIRSTNAME",
+            type: "text"
         },
         {
-            name: "LASTNAME"
+            name: "LASTNAME",
+            type: "text"
         }
     ]
 };

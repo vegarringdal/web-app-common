@@ -7,16 +7,18 @@ export const aiWebRestApi: ApiInterface = {
     accessInsert: ["API_ADMIN"],
     accessDelete: ["API_ADMIN"],
     primaryKey: "ID",
-    primaryKeyType: "number",
     columns: [
         {
-            name: "NAME"
+            name: "NAME",
+            type: "text"
         },
         {
-            name: "DATA"
+            name: "DATA",
+            type: "text"
         },
         {
-            name: "ENABLED"
+            name: "ENABLED",
+            type: "text"
         }
     ]
 };

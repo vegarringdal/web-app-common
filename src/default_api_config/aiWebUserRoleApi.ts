@@ -7,13 +7,21 @@ export const aiWebUserRoleApi: ApiInterface = {
     accessInsert: ["ACCESS_ADMIN"],
     accessDelete: ["ACCESS_ADMIN"],
     primaryKey: "ID",
-    primaryKeyType: "number",
     columns: [
         {
-            name: "WEB_USER_ID"
+            name: "WEB_USER_ID",
+            type: "number",
+            hiddenByDefault: true
         },
         {
-            name: "WEB_ROLE_ID"
+            name: "WEB_ROLE_ID",
+            type: "number",
+            hiddenByDefault: true
+        },
+        {
+            name: "NAME",
+            label: "ROLE NAME",
+            type: "text"
         }
     ]
 };
