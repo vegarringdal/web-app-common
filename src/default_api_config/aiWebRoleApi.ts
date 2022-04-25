@@ -6,6 +6,7 @@ export const aiWebRoleApi: ApiInterface = {
     accessUpdate: ["ACCESS_ADMIN"],
     accessInsert: ["ACCESS_ADMIN"],
     accessDelete: ["ACCESS_ADMIN"],
+    modified: "MODIFIED",
     primaryKey: "ID",
     columns: [
         {
@@ -15,6 +16,26 @@ export const aiWebRoleApi: ApiInterface = {
         {
             name: "DESCRIPTION",
             type: "text"
+        },
+        {
+            name: "MODIFIED",
+            type: "date",
+            accessUpdate: []
+        },
+        {
+            name: "MODIFIED_BY",
+            type: "text",
+            accessUpdate: []
+        },
+        {
+            name: "CREATED",
+            type: "date",
+            accessUpdate: []
+        },
+        {
+            name: "CREATED_BY",
+            type: "text",
+            accessUpdate: []
         }
     ]
 };

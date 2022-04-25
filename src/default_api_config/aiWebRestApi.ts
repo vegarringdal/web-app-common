@@ -6,6 +6,7 @@ export const aiWebRestApi: ApiInterface = {
     accessUpdate: ["API_ADMIN"],
     accessInsert: ["API_ADMIN"],
     accessDelete: ["API_ADMIN"],
+    modified: "MODIFIED",
     primaryKey: "ID",
     columns: [
         {
@@ -19,6 +20,26 @@ export const aiWebRestApi: ApiInterface = {
         {
             name: "ENABLED",
             type: "text"
+        },
+        {
+            name: "MODIFIED",
+            type: "date",
+            accessUpdate: []
+        },
+        {
+            name: "MODIFIED_BY",
+            type: "text",
+            accessUpdate: []
+        },
+        {
+            name: "CREATED",
+            type: "date",
+            accessUpdate: []
+        },
+        {
+            name: "CREATED_BY",
+            type: "text",
+            accessUpdate: []
         }
     ]
 };
