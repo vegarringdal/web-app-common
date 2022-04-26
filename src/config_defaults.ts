@@ -48,10 +48,10 @@ export const DEFAULT_DB_CONNECTION_STRING: string =
 export const DEFAULT_REDIS_URL: string = "redis://localhost:6379";
 
 // azure
-export const DEFAULT_AZURE_CLIENT_ID: string = "UNKNOW ID";
-export const DEFAULT_AZURE_TENDANT_URI: string = "WWW.SAMPLE.COM";
+export const DEFAULT_AZURE_CLIENT_ID: string = "SEE PORTAL AZURE";
+export const DEFAULT_AZURE_TENDANT_ID: string = "SEE PORTALT AZURE";
 export const DEFAULT_AZURE_SECRET: string = "SUPER SECRET";
-export const DEFAULT_AZURE_SCOPES: string[] = ["READ_ONLY"];
+export const DEFAULT_AZURE_SCOPES: string[] = ["SET API:: see expose API in azure appservice"];
 export const DEFAULT_ACTIVATE_AZURE_FAKE_SUCCESS: boolean = false;
 export const DEFAULT_AZURE_FAKE_ROLES: string[] = [];
 
