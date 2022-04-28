@@ -18,6 +18,17 @@ export const aiDrumApi: ApiInterface = {
             type: "number"
         },
         {
+            name: "CABLETYPE",
+            type: "text",
+            // RELATED
+            parentViewApi: "CABLE",
+            parentTitle: "Select drum cabletype",
+            parentFrom: "ID",
+            parentTo: "CABLETYPE_ID",
+            parentColumnsFromTo: [["CABLETYPE", "CABLETYPE"]],
+            accessUpdate: []
+        },
+        {
             name: "DRUM_RECIVED",
             type: "date"
         },
@@ -31,7 +42,11 @@ export const aiDrumApi: ApiInterface = {
         },
         {
             name: "USE_METERMARKING",
-            type: "text"
+            type: "text",
+            // CHECKBOX
+            isCheckbox: true,
+            checkboxChecked: "1",
+            checkboxUnchecked: ""
         },
         {
             name: "COMMENT_FOREMAN",

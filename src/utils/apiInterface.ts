@@ -126,13 +126,13 @@ type ApiColumnBase = {
     /**
      * column to insert value from parent
      */
-    parentTo?: string[][];
+    parentTo?: string;
     /**
      * parent column to update, usring par string,string
      * [[fromParentColumn, toChildColumn],[fromParentColumn, toChildColumn]]
      * useful if you have many columns from parent, also depends on view
      */
-    parentColumnsFromTo?: string[][];
+    parentColumnsFromTo?: [string, string][];
 };
 
 // todo: this is not working as I hoped, with base or base extended

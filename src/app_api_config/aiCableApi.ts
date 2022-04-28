@@ -18,6 +18,10 @@ export const aiCableApi: ApiInterface = {
             type: "text"
         },
         {
+            name: "CABLETYPE",
+            type: "text"
+        },
+        {
             name: "MODIFIED",
             type: "date",
             accessUpdate: []
