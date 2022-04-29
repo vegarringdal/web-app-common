@@ -14,13 +14,22 @@ export const aiDrumApi: ApiInterface = {
             type: "text"
         },
         {
+            name: "CABLETYPE_ID",
+            type: "text",
+            parentColumnsFromTo: [["_", "CABLETYPE"]]
+        },
+        {
             name: "CABLETYPE",
             type: "text",
             // RELATED
             parentViewApi: "CABLE",
             parentTitle: "Select drum cabletype",
-            parentFrom: "CABLETYPE",
-            parentTo: "CABLETYPE"
+            parentFrom: "ID",
+            parentTo: "CABLETYPE_ID",
+            parentColumnsFromTo: [
+                ["CABLETYPE", "CABLETYPE"],
+                ["ID", "CABLETYPE_ID"]
+            ]
         },
         {
             name: "DRUM_RECIVED",

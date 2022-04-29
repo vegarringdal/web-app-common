@@ -131,6 +131,7 @@ type ApiColumnBase = {
      * parent column to update, usring par string,string
      * [[fromParentColumn, toChildColumn],[fromParentColumn, toChildColumn]]
      * useful if you have many columns from parent, also depends on view
+     * this is also used when doign copy/paste and you need to update related at the same time
      */
     parentColumnsFromTo?: [string, string][];
 };
