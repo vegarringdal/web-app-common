@@ -10,14 +10,6 @@ export const DEFAULT_SERVER_HOST: string = "localhost";
 export const DEFAULT_SERVER_COMPRESSION: boolean = true;
 export const DEFAULT_SERVER_API_ROOT: string = "/api";
 
-// for express session
-export const DEFAULT_SESSION_MAX_AGE: number = 3600 * 60 * 60 * 24 * 14; //1 sec * 60sec * 60min * 24hours * 14 days
-export const DEFAULT_SESSION_DOMAIN: string = DEFAULT_SERVER_HOST;
-export const DEFAULT_SESSION_PRIVATE_KEY: string = "change_me";
-export const DEFAULT_SESSION_NAME: string = "session_name";
-export const DEFAULT_SESSION_HTTP_ONLY: boolean = true;
-export const DEFAULT_SESSION_SAME_SITE: boolean = true;
-
 // for develpment only
 export const DEFAULT_PORT_API: number = 1081;
 export const DEFAULT_PORT_WEB: number = 1080;
@@ -44,16 +36,11 @@ export const DEFAULT_DB_PASSWORD: string = "TESTDB";
 export const DEFAULT_DB_CONNECTION_STRING: string =
     "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=xe)))";
 
-// redis
-export const DEFAULT_REDIS_URL: string = "redis://localhost:6379";
-
 // azure
 export const DEFAULT_AZURE_CLIENT_ID: string = "SEE PORTAL AZURE";
 export const DEFAULT_AZURE_TENDANT_ID: string = "SEE PORTALT AZURE";
-export const DEFAULT_AZURE_SECRET: string = "SUPER SECRET";
 export const DEFAULT_AZURE_SCOPES: string[] = ["SET API:: see expose API in azure appservice"];
-export const DEFAULT_ACTIVATE_AZURE_FAKE_SUCCESS: boolean = false;
-export const DEFAULT_AZURE_FAKE_ROLES: string[] = [];
+
 
 /********************************************************************
  * Next part is just helpers for env variables so we get correct type from strings
