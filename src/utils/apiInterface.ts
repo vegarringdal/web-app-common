@@ -8,6 +8,13 @@ type ApiInterfaceBase = {
      */
     viewName: string;
     /**
+     * project column name
+     * this will force user to supply this (API)
+     * useful for 1 appication for many project
+     * it will be up to you and verify/create role to enforce it on db side
+     */
+    project: string | null;
+    /**
      * web roles needed to edit
      * you will also be able to set permission on column
      * this is to simplify the process, save work

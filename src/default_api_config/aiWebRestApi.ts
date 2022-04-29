@@ -3,6 +3,7 @@ import { ApiInterface } from "../index";
 export const aiWebRestApi: ApiInterface = {
     apiName: "WEB_REST_API",
     viewName: "AI_WEB_REST_API",
+    project: null,
     accessUpdate: ["API_ADMIN"],
     accessInsert: ["API_ADMIN"],
     accessDelete: ["API_ADMIN"],

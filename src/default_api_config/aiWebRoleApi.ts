@@ -3,6 +3,7 @@ import { ApiInterface } from "../index";
 export const aiWebRoleApi: ApiInterface = {
     apiName: "WEB_ROLE",
     viewName: "AI_WEB_ROLE",
+    project: null,
     accessUpdate: ["ACCESS_ADMIN"],
     accessInsert: ["ACCESS_ADMIN"],
     accessDelete: ["ACCESS_ADMIN"],

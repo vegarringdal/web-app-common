@@ -3,6 +3,7 @@ import { ApiInterface } from "../index";
 export const aiDrumApi: ApiInterface = {
     apiName: "DRUM",
     viewName: "AI_DRUM",
+    project: null,
     accessUpdate: ["API_ADMIN"],
     accessInsert: ["API_ADMIN"],
     accessDelete: ["API_ADMIN"],
