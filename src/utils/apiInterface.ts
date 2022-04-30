@@ -4,7 +4,7 @@ type ApiInterfaceBase = {
      */
     apiName: string;
     /**
-     * view in database to call
+     * view in database to call, (or table...)
      */
     viewName: string;
     /**
@@ -77,7 +77,7 @@ type ApiColumnBase = {
      */
     label?: string;
     /**
-     * type of input, defaults to text
+     * type of data, defaults to text
      */
     type: "text" | "number" | "date";
     /**
@@ -87,6 +87,7 @@ type ApiColumnBase = {
 
     /**
      * needed if you dont have a global
+     * settign this to [] is the same as readonly
      */
     accessUpdate?: string[];
 
@@ -105,15 +106,17 @@ type ApiColumnBase = {
 
     /**
      * simple dropdown values from another API
-     * [[label, value],[label, value]]
+     * column setup is the same as any other
      */
     dropDownViewApi?: string;
     dropDownValueColumn?: string;
-    dropDownLabelColumn?: string;
+    dropDownColumns?: ApiColumnBase;
 
     /**
-     * simple dropdown values
-     * [[label, value],[label, value]]
+     * simple dropdown values (HARD CODED)
+     * [{label, description, value},{label, description, value}]
+     * or
+     * [{label, value},{label, value}]
      */
     dropDownValues?: string[][];
 
