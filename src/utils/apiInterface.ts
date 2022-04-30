@@ -7,6 +7,12 @@ type ApiInterfaceBase = {
      * view in database to call, (or table...)
      */
     viewName: string;
+
+    /**
+     * TODO:  do we what schema or/and databse connection options ?
+     * or up to user to define common entry?
+     */
+
     /**
      * project column name
      * this will force user to supply this (API)
