@@ -29,7 +29,7 @@ export const DEFAULT_DB_CONNECTION_CLIENT_ID: string = "PUBLIC-USER"; // if logi
 export const DEFAULT_DB_CONNECTION_CLIENT_INFO: string = "WWW.SAMPLE.COM";
 export const DEFAULT_DB_CONNECTION_MODULE: string = "WWW.SAMPLE.COM"; // use host name?
 export const DEFAULT_DB_CONNECTION_DB_OP: string = "WEB-REPORTS";
-export const DEFAULT_DB_CONNECTION_ACTION: string = "NA - NOT IN USE -> SENDING REPORT NAME";
+export const DEFAULT_DB_CONNECTION_ACTION: string = "NA - NOT IN USE -> APP IS SENDING IN 'READ' or 'MODIFY' so roles can be more limited";
 
 export const DEFAULT_DB_USERNAME: string = "TESTDB";
 export const DEFAULT_DB_PASSWORD: string = "TESTDB";
