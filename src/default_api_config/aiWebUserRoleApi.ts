@@ -13,12 +13,11 @@ export const aiWebUserRoleApi: ApiInterface = {
         {
             name: "WEB_USER_ID",
             type: "number",
-            accessUpdate: [],
             parentColumnsFromTo: [["_", "USERNAME"]]
         },
         {
-            name: "NAME",
-            label: "ROLE NAME",
+            name: "USERNAME",
+            label: "USERNAME",
             type: "text",
             // RELATED
             parentViewApi: "WEB_USER",
@@ -30,7 +29,6 @@ export const aiWebUserRoleApi: ApiInterface = {
         {
             name: "WEB_ROLE_ID",
             type: "number",
-            accessUpdate: [],
             parentColumnsFromTo: [["_", "CABLETYPE"]]
         },
         {
