@@ -109,28 +109,15 @@ type ApiColumnBase = {
      * if checkbox, what value to set when unchecked
      */
     checkboxUnchecked?: string;
-
-    /**
-     * simple dropdown values from another API
-     * column setup is the same as any other
-     */
-    dropDownViewApi?: string;
-    dropDownValueColumn?: string;
-    dropDownColumns?: ApiColumnBase;
-
-    /**
-     * simple dropdown values (HARD CODED)
-     * [{label, description, value},{label, description, value}]
-     * or
-     * [{label, value},{label, value}]
-     */
-    dropDownValues?: string[][];
-
     /**
      * parent_view api to use, will bring button on for opening dialog
      * you need to make sure its added
      */
     parentViewApi?: string;
+    /**
+     * TYPE
+     */
+    parentViewType?: "DIALOG-WITH-OVERLAY" | "DROPDOWN" | "DIALOG-WITHOUT-OVERLAY";
     /**
      * parent_view, will bring button on for opening dialog
      */
