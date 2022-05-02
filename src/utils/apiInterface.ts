@@ -9,7 +9,7 @@ type ApiInterfaceBase = {
     viewName: string;
 
     /**
-     * TODO:  do we what schema or/and databse connection options ?
+     * TODO:  do we what schema or/and database connection options ?
      * or up to user to define common entry?
      */
 
@@ -87,18 +87,27 @@ type ApiColumnBase = {
      */
     type: "text" | "number" | "date";
     /**
-     *  show by default
+     *  default false
      */
-    hiddenByDefault?: boolean;
-
+    removeFromGrid?: boolean;
+    /**
+     *  default false
+     */
+    setAsOptionalInGrid?: boolean;
+    /**
+     * read only in grid (column)
+     * dafault false
+     */
+    readOnlyGrid?: boolean;
     /**
      * needed if you dont have a global
-     * settign this to [] is the same as readonly
+     * settign this to [] is the same as readonly backend... column will be filter away before sent to server
+     * you want this on auto generated primary key, modified/created columns, project column
      */
     accessUpdate?: string[];
 
     /**
-     * is checkbox
+     * is checkbox, you need to set checkboxChecked & checkboxUnchecked
      */
     isCheckbox?: boolean;
     /**
@@ -112,6 +121,7 @@ type ApiColumnBase = {
     /**
      * parent_view api to use, will bring button on for opening dialog
      * you need to make sure its added
+     * you also need to set parentViewType, parentTitle, parentFrom, parentTo, parentColumnsFromTo
      */
     parentViewApi?: string;
     /**
