@@ -5,6 +5,7 @@ type ApiInterfaceBase = {
     apiName: string;
     /**
      * view in database to call, (or table...)
+     * you can also do schema.table or schema.view
      */
     viewName: string;
 
