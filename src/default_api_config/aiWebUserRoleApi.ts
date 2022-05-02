@@ -11,6 +11,11 @@ export const aiWebUserRoleApi: ApiInterface = {
     primaryKey: "ID",
     columns: [
         {
+            name: "ID",
+            type: "number",
+            accessUpdate: []
+        },
+        {
             name: "WEB_USER_ID",
             type: "number",
             parentColumnsFromTo: [["_", "USERNAME"]]

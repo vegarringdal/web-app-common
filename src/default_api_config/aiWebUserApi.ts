@@ -11,6 +11,11 @@ export const aiWebUserApi: ApiInterface = {
     primaryKey: "ID",
     columns: [
         {
+            name: "ID",
+            type: "number",
+            accessUpdate: []
+        },
+        {
             name: "USERNAME",
             type: "text"
         },
