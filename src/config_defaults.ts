@@ -41,7 +41,6 @@ export const DEFAULT_AZURE_CLIENT_ID: string = "SEE PORTAL AZURE";
 export const DEFAULT_AZURE_TENDANT_ID: string = "SEE PORTALT AZURE";
 export const DEFAULT_AZURE_SCOPES: string[] = ["SET API:: see expose API in azure appservice"];
 
-
 /********************************************************************
  * Next part is just helpers for env variables so we get correct type from strings
  *
