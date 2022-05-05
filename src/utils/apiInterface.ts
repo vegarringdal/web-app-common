@@ -10,6 +10,11 @@ export type ApiInterface = {
     viewName: string;
 
     /**
+     * title to be used for dynamic reports
+     */
+    title?: string;
+
+    /**
      * TODO:  do we what schema or/and database connection options ?
      * or up to user to define common entry?
      */
@@ -76,6 +81,8 @@ export type ApiInterfaceError = {
     apiName: string;
 
     viewName: string;
+
+    title?: string;
 
     project: string;
 
