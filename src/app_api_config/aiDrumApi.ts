@@ -34,15 +34,18 @@ export const aiDrumApi: ApiInterface = {
         },
         {
             name: "DRUM_RECIVED",
-            type: "date"
+            type: "date",
+            setAsOptionalInGrid: true
         },
         {
             name: "LENGTH_RECIVED",
-            type: "number"
+            type: "number",
+            readOnlyGrid: true
         },
         {
             name: "LENGTH_LOST",
-            type: "number"
+            type: "number",
+            removeFromGrid: true
         },
         {
             name: "USE_METERMARKING",
