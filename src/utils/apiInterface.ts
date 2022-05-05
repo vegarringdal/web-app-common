@@ -1,4 +1,4 @@
-type ApiInterfaceBase = {
+export type ApiInterface = {
     /**
      * rest api name
      */
@@ -72,9 +72,7 @@ type ApiInterfaceBase = {
     columns: ApiColumn[];
 };
 
-export type ApiInterface = ApiInterfaceBase;
-
-type ApiColumnBase = {
+export type ApiColumn = {
     /**
      * name in view
      */
@@ -126,7 +124,7 @@ type ApiColumnBase = {
      */
     parentViewApi?: string;
     /**
-     * TYPE
+     * TYPE DIALOG-WITH-OVERLAY is default
      */
     parentViewType?: "DIALOG-WITH-OVERLAY" | "DROPDOWN" | "DIALOG-WITHOUT-OVERLAY";
     /**
@@ -149,6 +147,3 @@ type ApiColumnBase = {
      */
     parentColumnsFromTo?: [string, string][];
 };
-
-// todo: this is not working as I hoped, with base or base extended
-export type ApiColumn = ApiColumnBase;
