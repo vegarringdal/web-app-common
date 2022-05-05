@@ -72,6 +72,57 @@ export type ApiInterface = {
     columns: ApiColumn[];
 };
 
+export type ApiInterfaceError = {
+    apiName: string;
+
+    viewName: string;
+
+    project: string;
+
+    accessUpdate: string;
+    accessDelete: string;
+    accessInsert: string;
+
+    modified?: string;
+
+    overrideDefault: string;
+
+    primaryKey: string;
+
+    childViewApi: string;
+    childTo: string;
+    childFrom: string;
+
+    columns: ApiColumnError[];
+};
+
+export type ApiColumnError = {
+    name: string;
+
+    label?: string;
+
+    type: string;
+
+    removeFromGrid: string;
+
+    setAsOptionalInGrid: string;
+
+    readOnlyGrid: string;
+
+    accessUpdate: string;
+
+    isCheckbox: string;
+    checkboxChecked: string;
+    checkboxUnchecked: string;
+
+    parentViewApi: string;
+    parentViewType: string;
+    parentTitle: string;
+    parentFrom: string;
+    parentTo: string;
+    parentColumnsFromTo: string;
+};
+
 export type ApiColumn = {
     /**
      * name in view

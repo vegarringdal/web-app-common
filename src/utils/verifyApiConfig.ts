@@ -1,148 +1,141 @@
-import { ApiInterface } from "./ApiInterface";
+import { ApiColumnError, ApiInterface, ApiInterfaceError } from "./ApiInterface";
 
-export function verifyApiConfig(config: ApiInterface) {
-    /**
-     * rest api name
-     */
-    //apiName: string;
-    /**
-     * view in database to call, (or table...)
-     * you can also do schema.table or schema.view
-     */
-    //viewName: string;
-    /**
-     * TODO:  do we what schema or/and database connection options ?
-     * or up to user to define common entry?
-     */
-    /**
-     * project column name
-     * this will force user to supply this (API)
-     * useful for 1 appication for many project
-     * it will be up to you and verify/create role to enforce it on db side
-     */
-    //project: string | null;
-    /**
-     * web roles needed to edit
-     * you will also be able to set permission on column
-     * this is to simplify the process, save work
-     */
-    //accessUpdate?: string[];
-    /**
-     * web roles needed to edit
-     */
-    //accessDelete?: string[];
-    /**
-     * web roles needed to edit
-     */
-    //accessInsert?: string[];
-    /**
-     * modified
-     * to get updated without getting all
-     */
-    //modified?: string;
-    /**
-     * we might supply default api with app we need to override later with db api
-     * but we dont want anyone to override by accident
-     * so to override they need to set this to true
-     */
-    //overrideDefault?: boolean;
-    /**
-     * primary key, will use for selection during reload/delete/update
-     * either 1 or many to generate key
-     * important you dont use null columns here
-     */
-    //primaryKey: string; // | string[]; TODO: add option for this
-    /**
-     * child view api to use/call
-     */
-    //childViewApi?: string;
-    /**
-     * FOR AUTO GENERATED PAGE ONLY
-     * child column to query
-     */
-    //childTo?: string;
-    /**
-     * FOR AUTO GENERATED PAGE ONLY
-     * column to query with
-     */
-    //childFrom?: string;
-    /**
-     * columns we can edit/ custom headername etc
-     */
-    //columns: ApiColumn[];
+export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiInterfaceError, number] {
+    const config = configInput || ({} as ApiInterface);
 
+    const errorLog = {} as ApiInterfaceError;
+
+    let errorCount: number = 0;
+
+    if (!config.apiName) {
+        errorLog.apiName = "Missing";
+        errorCount++;
+    }
+
+    if (!config.viewName) {
+        errorLog.viewName = "Missing";
+        errorCount++;
+    }
+
+    if (!config.project) {
+        config.project = null;
+    }
+
+    if (config.accessUpdate && !Array.isArray(config.accessUpdate)) {
+        errorLog.accessInsert = "need to be array";
+    }
+
+    if (config.accessDelete && !Array.isArray(config.accessDelete)) {
+        errorLog.accessInsert = "need to be array";
+    }
+
+    if (config.accessInsert && !Array.isArray(config.accessInsert)) {
+        errorLog.accessInsert = "need to be array";
+    }
+
+    if (!config.primaryKey) {
+        errorLog.primaryKey = "Missing";
+        errorCount++;
+    }
+
+    if (config.childViewApi) {
+        if (!config.childTo) {
+            errorLog.childTo = "Missing, needed when childViewApi is used ";
+            errorCount++;
+        }
+        if (!config.childFrom) {
+            errorLog.childFrom = "Missing, needed when childViewApi is used ";
+            errorCount++;
+        }
+    }
+
+    errorLog.columns = [];
     config.columns.forEach((col) => {
-        /**
-         * name in view
-         */
-        //name: string;
-        /**
-         * what to use in grid/labels
-         */
-        //label?: string;
-        /**
-         * type of data, defaults to text
-         */
-        // type: "text" | "number" | "date";
-        /**
-         *  default false
-         */
-        // removeFromGrid?: boolean;
-        /**
-         *  default false
-         */
-        //setAsOptionalInGrid?: boolean;
-        /**
-         * read only in grid (column)
-         * dafault false
-         */
-        //readOnlyGrid?: boolean;
-        /**
-         * needed if you dont have a global
-         * settign this to [] is the same as readonly backend... column will be filter away before sent to server
-         * you want this on auto generated primary key, modified/created columns, project column
-         */
-        //accessUpdate?: string[];
-        /**
-         * is checkbox, you need to set checkboxChecked & checkboxUnchecked
-         */
-        //isCheckbox?: boolean;
-        /**
-         * if checkbox, what value to set when checked
-         */
-        //checkboxChecked?: string;
-        /**
-         * if checkbox, what value to set when unchecked
-         */
-        //checkboxUnchecked?: string;
-        /**
-         * parent_view api to use, will bring button on for opening dialog
-         * you need to make sure its added
-         * you also need to set parentViewType, parentTitle, parentFrom, parentTo, parentColumnsFromTo
-         */
-        //parentViewApi?: string;
-        /**
-         * TYPE DIALOG-WITH-OVERLAY is default
-         */
-        //parentViewType?: "DIALOG-WITH-OVERLAY" | "DROPDOWN" | "DIALOG-WITHOUT-OVERLAY";
-        /**
-         * parent_view, will bring button on for opening dialog
-         */
-        //parentTitle?: string;
-        /**
-         * parent api column to get
-         */
-        //parentFrom?: string;
-        /**
-         * column to insert value from parent
-         */
-        //parentTo?: string;
-        /**
-         * parent column to update, usring par string,string
-         * [[fromParentColumn, toChildColumn],[fromParentColumn, toChildColumn]]
-         * useful if you have many columns from parent, also depends on view
-         * this is also used when doign copy/paste and you need to update related at the same time
-         */
-        //parentColumnsFromTo?: [string, string][];
+        const errorCol = {} as ApiColumnError;
+        errorLog.columns.push(errorCol);
+
+        if (!col.name) {
+            errorCol.name = "Missing";
+            errorCount++;
+        }
+
+        // todo, fix label?
+
+        if (!col.type) {
+            col.type = "text";
+        }
+
+        if (col.removeFromGrid) {
+            col.removeFromGrid = true;
+        }
+
+        if (col.setAsOptionalInGrid) {
+            col.setAsOptionalInGrid = true;
+        }
+
+        if (col.readOnlyGrid) {
+            col.readOnlyGrid = true;
+        }
+
+        if (col.accessUpdate && !Array.isArray(col.accessUpdate)) {
+            errorCol.accessUpdate = "need to be array";
+            errorCount++;
+        }
+
+        if (col.isCheckbox) {
+            col.isCheckbox = true;
+            if (!col.checkboxChecked) {
+                errorCol.checkboxChecked = "Needed when setting isCheckbox ";
+                errorCount++;
+            }
+        } else {
+            if (col.checkboxChecked) {
+                delete col.checkboxChecked;
+            }
+        }
+
+        if (col.parentViewApi) {
+            if (!col.parentViewType) {
+                col.parentViewType = "DIALOG-WITH-OVERLAY";
+            }
+
+            if (!col.parentTitle) {
+                col.parentTitle = "Add parent";
+            }
+
+            if (!col.parentFrom) {
+                errorCol.parentFrom = "Needed when setting parentViewApi ";
+                errorCount++;
+            }
+
+            if (!col.parentTo) {
+                errorCol.parentTo = "Needed when setting parentViewApi ";
+                errorCount++;
+            }
+        } else {
+            if (col.parentViewType) {
+                delete col.parentViewType;
+            }
+
+            if (col.parentTitle) {
+                delete col.parentTitle;
+            }
+
+            if (col.parentFrom) {
+                delete col.parentViewType;
+            }
+
+            if (col.parentTo) {
+                delete col.parentTitle;
+            }
+        }
+
+        if (col.parentColumnsFromTo && !Array.isArray(col.parentColumnsFromTo)) {
+            errorCol.parentColumnsFromTo = "needs to be array of array [[string, string], [string, string]] ";
+            errorCount++;
+            // todo, check inner
+        }
     });
+
+    return [config, errorLog, errorCount];
 }
