@@ -1,5 +1,11 @@
 import { ApiColumnError, ApiInterface, ApiInterfaceError } from "./ApiInterface";
+import { validateColumnTableName } from "./validateColumnTableName";
 
+/**
+ * helps validate/fix issues/set defaults on config
+ * @param configInput
+ * @returns
+ */
 export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiInterfaceError, number] {
     const config = configInput || ({} as ApiInterface);
 
@@ -14,6 +20,14 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
 
     if (!config.viewName) {
         errorLog.viewName = "Missing";
+        errorCount++;
+    }
+
+    try {
+        validateColumnTableName(config.viewName, true);
+        config.viewName = config.viewName.toUpperCase();
+    } catch (e) {
+        errorLog.viewName = e;
         errorCount++;
     }
 
@@ -38,13 +52,58 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
         errorCount++;
     }
 
+    try {
+        validateColumnTableName(config.primaryKey);
+        config.primaryKey = config.primaryKey.toUpperCase();
+    } catch (e) {
+        errorLog.primaryKey = e;
+        errorCount++;
+    }
+
     if (config.childViewApi) {
         if (!config.childTo) {
             errorLog.childTo = "Missing, needed when childViewApi is used ";
             errorCount++;
         }
+
+        try {
+            validateColumnTableName(config.childTo);
+            config.childTo = config.childTo.toUpperCase();
+        } catch (e) {
+            errorLog.childTo = e;
+            errorCount++;
+        }
+
         if (!config.childFrom) {
             errorLog.childFrom = "Missing, needed when childViewApi is used ";
+            errorCount++;
+        }
+
+        try {
+            validateColumnTableName(config.childFrom);
+            config.childFrom = config.childFrom.toUpperCase();
+        } catch (e) {
+            errorLog.childFrom = e;
+            errorCount++;
+        }
+    }
+
+    if (config.modified) {
+        try {
+            validateColumnTableName(config.modified);
+            config.modified = config.modified.toUpperCase();
+        } catch (e) {
+            errorLog.modified = e;
+            errorCount++;
+        }
+    }
+
+    if (config.project) {
+        try {
+            validateColumnTableName(config.project);
+            config.project = config.project.toUpperCase();
+        } catch (e) {
+            errorLog.project = e;
             errorCount++;
         }
     }
@@ -56,6 +115,14 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
 
         if (!col.name) {
             errorCol.name = "Missing";
+            errorCount++;
+        }
+
+        try {
+            validateColumnTableName(col.name);
+            col.name = col.name.toUpperCase();
+        } catch (e) {
+            errorCol.name = e;
             errorCount++;
         }
 
@@ -84,6 +151,7 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
 
         if (col.isCheckbox) {
             col.isCheckbox = true;
+
             if (!col.checkboxChecked) {
                 errorCol.checkboxChecked = "Needed when setting isCheckbox ";
                 errorCount++;
@@ -108,8 +176,24 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
                 errorCount++;
             }
 
+            try {
+                validateColumnTableName(col.parentFrom);
+                col.parentFrom = col.parentFrom.toUpperCase();
+            } catch (e) {
+                errorCol.parentFrom = e;
+                errorCount++;
+            }
+
             if (!col.parentTo) {
                 errorCol.parentTo = "Needed when setting parentViewApi ";
+                errorCount++;
+            }
+
+            try {
+                validateColumnTableName(col.parentTo);
+                col.parentTo = col.parentTo.toUpperCase();
+            } catch (e) {
+                errorCol.parentTo = e;
                 errorCount++;
             }
         } else {
