@@ -1,4 +1,4 @@
-export const validateColumnTableName = function (value: string, allowDot = false) {
+export const validateColumnTableName = function (value: any, allowDot = false): string {
     if (typeof value !== "string") {
         throw "value needs to be string";
     }
@@ -15,5 +15,5 @@ export const validateColumnTableName = function (value: string, allowDot = false
         }
     });
 
-    return values.join(".");
+    return values.join(".").toUpperCase();
 };

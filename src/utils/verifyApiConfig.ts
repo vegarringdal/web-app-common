@@ -24,10 +24,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
     }
 
     try {
-        validateColumnTableName(config.viewName, true);
-        config.viewName = config.viewName.toUpperCase();
+        config.viewName = validateColumnTableName(config.viewName, true);
     } catch (e) {
-        errorLog.viewName = e;
+        errorLog.viewName = e as string as string;
         errorCount++;
     }
 
@@ -53,10 +52,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
     }
 
     try {
-        validateColumnTableName(config.primaryKey);
-        config.primaryKey = config.primaryKey.toUpperCase();
+        config.primaryKey = validateColumnTableName(config.primaryKey);
     } catch (e) {
-        errorLog.primaryKey = e;
+        errorLog.primaryKey = e as string;
         errorCount++;
     }
 
@@ -67,10 +65,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
         }
 
         try {
-            validateColumnTableName(config.childTo);
-            config.childTo = config.childTo.toUpperCase();
+            config.childTo = validateColumnTableName(config.childTo);
         } catch (e) {
-            errorLog.childTo = e;
+            errorLog.childTo = e as string;
             errorCount++;
         }
 
@@ -80,30 +77,27 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
         }
 
         try {
-            validateColumnTableName(config.childFrom);
-            config.childFrom = config.childFrom.toUpperCase();
+            config.childFrom = validateColumnTableName(config.childFrom);
         } catch (e) {
-            errorLog.childFrom = e;
+            errorLog.childFrom = e as string;
             errorCount++;
         }
     }
 
     if (config.modified) {
         try {
-            validateColumnTableName(config.modified);
-            config.modified = config.modified.toUpperCase();
+            config.modified = validateColumnTableName(config.modified);
         } catch (e) {
-            errorLog.modified = e;
+            errorLog.modified = e as string;
             errorCount++;
         }
     }
 
     if (config.project) {
         try {
-            validateColumnTableName(config.project);
-            config.project = config.project.toUpperCase();
+            config.project = validateColumnTableName(config.project);
         } catch (e) {
-            errorLog.project = e;
+            errorLog.project = e as string;
             errorCount++;
         }
     }
@@ -119,10 +113,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
         }
 
         try {
-            validateColumnTableName(col.name);
-            col.name = col.name.toUpperCase();
+            col.name = validateColumnTableName(col.name);
         } catch (e) {
-            errorCol.name = e;
+            errorCol.name = e as string;
             errorCount++;
         }
 
@@ -177,10 +170,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
             }
 
             try {
-                validateColumnTableName(col.parentFrom);
-                col.parentFrom = col.parentFrom.toUpperCase();
+                col.parentFrom = validateColumnTableName(col.parentFrom);
             } catch (e) {
-                errorCol.parentFrom = e;
+                errorCol.parentFrom = e as string;
                 errorCount++;
             }
 
@@ -190,10 +182,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
             }
 
             try {
-                validateColumnTableName(col.parentTo);
-                col.parentTo = col.parentTo.toUpperCase();
+                col.parentTo = validateColumnTableName(col.parentTo);
             } catch (e) {
-                errorCol.parentTo = e;
+                errorCol.parentTo = e as string;
                 errorCount++;
             }
         } else {
