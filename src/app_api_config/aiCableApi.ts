@@ -3,6 +3,7 @@ import { ApiInterface } from "../index";
 export const aiCableApi: ApiInterface = {
     apiName: "CABLE",
     viewName: "AI_CABLE",
+    title: "Cable Types",
     project: null,
     accessUpdate: ["API_ADMIN"],
     accessInsert: ["API_ADMIN"],
