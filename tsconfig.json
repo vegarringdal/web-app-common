@@ -3,6 +3,9 @@
         "rootDirs": ["./src"],
         "module": "commonjs",
         "noEmit": false,
-        "isolatedModules": false
+        "isolatedModules": false,
+        "paths": {
+            "@rad-common": ["../rad-common/src/index.ts"]
+        }
     }
 }

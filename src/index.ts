@@ -5,7 +5,7 @@
  * SO IT CAN BE USED BY BROWSER AND NODEJS
  */
 import { getDefaultConfig } from "./default_api_config/getDefaultConfig";
-import { getAppConfig } from "./app_api_config/getAppConfig";
+import { getAppConfig } from "../../rad-frontend/src/api/index";
 
 export function getApiConfigs() {
     return getDefaultConfig().concat(getAppConfig());
