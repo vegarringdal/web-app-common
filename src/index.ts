@@ -5,6 +5,8 @@
  * SO IT CAN BE USED BY BROWSER AND NODEJS
  */
 import { getDefaultConfig } from "./default_api_config/getDefaultConfig";
+
+// I have no good way to do this without full path.. else typescript/vites complains
 import { getAppConfig } from "../../rad-frontend/src/api/index";
 
 export function getApiConfigs() {
