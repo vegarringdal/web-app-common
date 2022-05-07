@@ -62,7 +62,16 @@ export const aiDrumApi: ApiInterface = {
         },
         {
             name: "COMMENT_STORAGE",
-            type: "text"
+            type: "text",
+            parentViewApi: "CABLE",
+            parentViewType: "DROPDOWN",
+            parentTitle: "Select drum cabletype",
+            parentFrom: "ID",
+            parentTo: "CABLETYPE_ID",
+            parentColumnsFromTo: [
+                ["CABLETYPE", "CABLETYPE"],
+                ["ID", "CABLETYPE_ID"]
+            ]
         },
         {
             name: "LOCATION",
