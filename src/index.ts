@@ -4,14 +4,6 @@
  * ALL IMPORTS NEED TO BE INTERNAL ONLY
  * SO IT CAN BE USED BY BROWSER AND NODEJS
  */
-import { getDefaultConfig } from "./default_api_config/getDefaultConfig";
-
-// I have no good way to do this without full path.. else typescript/vites complains
-import { getAppConfig } from "../../rad-frontend/src/api/index";
-
-export function getApiConfigs() {
-    return getDefaultConfig().concat(getAppConfig());
-}
 export * from "./config_defaults";
 export * from "./utils/log";
 export { NumberFormater } from "./utils/numberFormater";
