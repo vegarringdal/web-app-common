@@ -17,15 +17,21 @@ export const aiWebRestApi: ApiInterface = {
         },
         {
             name: "NAME",
-            type: "text"
+            type: "text",
+            accessUpdate: []
         },
         {
             name: "DATA",
-            type: "text"
+            type: "text",
+            readOnlyGrid: true,
+            // we only want update to happen with verify, so we have less errors
         },
         {
             name: "ENABLED",
-            type: "text"
+            type: "text",
+            isCheckbox: true,
+            checkboxChecked: "1",
+            checkboxUnchecked: null
         },
         {
             name: "MODIFIED",
