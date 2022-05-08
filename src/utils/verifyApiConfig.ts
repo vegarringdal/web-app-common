@@ -105,7 +105,7 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
     errorLog.columns = [];
     config.columns.forEach((col) => {
         const errorCol = {} as ApiColumnError;
-        errorLog.columns.push(errorCol);
+        const oldCount = errorCount;
 
         if (!col.name) {
             errorCol.name = "Missing";
@@ -209,6 +209,9 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
             errorCol.parentColumnsFromTo = "needs to be array of array [[string, string], [string, string]] ";
             errorCount++;
             // todo, check inner
+        }
+        if (oldCount !== errorCount) {
+            errorLog.columns.push(errorCol);
         }
     });
 

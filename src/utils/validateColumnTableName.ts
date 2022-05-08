@@ -1,6 +1,6 @@
 export const validateColumnTableName = function (value: any, allowDot = false): string {
     if (typeof value !== "string") {
-        throw "value needs to be string";
+        throw "is missing or not string";
     }
 
     let values = [value];
