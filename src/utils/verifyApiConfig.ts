@@ -32,6 +32,14 @@ export function verifyApiConfig(configInput: ApiInterface): [ApiInterface, ApiIn
 
     if (!config.project) {
         config.project = null;
+        if (!config.projectHardCoded) {
+            errorLog.projectHardCoded = "not allowed when project column is not set";
+            errorCount++;
+        }
+    } else {
+        if (!config.projectHardCoded) {
+            config.projectHardCoded = null;
+        }
     }
 
     if (config.accessUpdate && !Array.isArray(config.accessUpdate)) {

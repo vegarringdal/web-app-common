@@ -27,6 +27,10 @@ export type ApiInterface = {
      */
     project: string | null;
     /**
+     * way to override /set what project needs to be
+     */
+    projectHardCoded?: string;
+    /**
      * web roles needed to edit
      * you will also be able to set permission on column
      * this is to simplify the process, save work
@@ -85,6 +89,7 @@ export type ApiInterfaceError = {
     title?: string;
 
     project: string;
+    projectHardCoded?: string;
 
     accessUpdate: string;
     accessDelete: string;
