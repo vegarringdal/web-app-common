@@ -23,7 +23,7 @@ export const aiWebRestApi: ApiInterface = {
         {
             name: "DATA",
             type: "text",
-            readOnlyGrid: true,
+            readOnlyGrid: true
             // we only want update to happen with verify, so we have less errors
         },
         {
