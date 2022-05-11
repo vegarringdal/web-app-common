@@ -18,7 +18,8 @@ export const aiWebUserRoleApi: ApiInterface = {
         {
             name: "WEB_USER_ID",
             type: "number",
-            parentColumnsFromTo: [["_", "USERNAME"]]
+            parentColumnsFromTo: [["_", "USERNAME"]],
+            setAsOptionalInGrid: true
         },
         {
             name: "USERNAME",
@@ -29,12 +30,16 @@ export const aiWebUserRoleApi: ApiInterface = {
             parentTitle: "Select user",
             parentFrom: "ID",
             parentTo: "WEB_USER_ID",
-            parentColumnsFromTo: [["USERNAME", "USERNAME"]]
+            parentColumnsFromTo: [
+                ["USERNAME", "USERNAME"],
+                [, "WEB_USER_ID"] // todo, this should not be needed when its defined under ParentTo
+            ]
         },
         {
             name: "WEB_ROLE_ID",
             type: "number",
-            parentColumnsFromTo: [["_", "CABLETYPE"]]
+            parentColumnsFromTo: [["_", "CABLETYPE"]],
+            setAsOptionalInGrid: true
         },
         {
             name: "NAME",
@@ -45,7 +50,10 @@ export const aiWebUserRoleApi: ApiInterface = {
             parentTitle: "Select role",
             parentFrom: "ID",
             parentTo: "WEB_ROLE_ID",
-            parentColumnsFromTo: [["NAME", "NAME"]]
+            parentColumnsFromTo: [
+                ["NAME", "NAME"],
+                [, "WEB_ROLE_ID"] // todo, this should not be needed when its defined under ParentTo
+            ]
         },
         {
             name: "MODIFIED",
